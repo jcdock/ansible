@@ -1,0 +1,10 @@
+- hosts: servers # Replace this once you add your hosts; localhost will require a password which will probably fail by default
+  become: true # This makes it so Ansible becomes root to run privilaged tasks such as updating the system
+  tasks:
+  - name: Upgrade all installed packages for Debian and Ubuntu
+    apt:
+      name: "*"
+      state: latest
+      update_cache: yes
+      force_apt_get: yes
+      autoremove: yes
